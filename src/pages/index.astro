@@ -1,0 +1,23 @@
+---
+import Header from '../components/ui/Header.astro'
+import VideoPlayer from '../components/VideoPlayer.astro'
+---
+
+<html lang='en'>
+	<head>
+		<meta charset='utf-8' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+		<title>Memoria Audiovisual</title>
+		<link rel='preconnect' href='https://fonts.googleapis.com' />
+		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+		<link href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@500;700;800&display=swap' rel='stylesheet' />
+	</head>
+	<body class='p-4 w-full max-h-screen h-full'>
+		<Header />
+		<main>
+			<VideoPlayer />
+		</main>
+	</body>
+</html>
