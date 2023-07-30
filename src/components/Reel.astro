@@ -1,0 +1,50 @@
+---
+import LogoULS from './icons/LogoULS.astro'
+import { PauseButton } from './PauseButton'
+import { MuteButton } from './MuteButton'
+
+const { architect, index, total } = Astro.props
+const { id, name, projectName, projectYear } = architect
+---
+
+<div class='swiper-slide relative text-white'>
+	<video class='object-cover h-full w-full' loop>
+		<source src={architect.reel} type='video/mp4' />
+	</video>
+	<!-- <MuteButton muted={index === 1} client:load /> -->
+	<div class='absolute bottom-0 w-full h-fit z-10 grid gap-4 p-4'>
+		<div class='flex gap-4'>
+			<div class='w-full'>
+				<h2 class='text-xl font-semibold'>{name}</h2>
+				<p class='text-sm leading-tight'>{projectName} - <b>{projectYear}</b></p>
+			</div>
+			<p class='w-fit shrink-0 text-lg self-end'>{index} / {total}</p>
+		</div>
+		<div class='flex items-center relative justify-between'>
+			<a class='bg-white text-zinc-950 rounded-xl px-3 py-1 font-medium h-fit' href='#'>
+				Más Info
+			</a>
+			<a href='#' class='h-10 w-10 absolute left-0 right-0 mx-auto'>
+				<LogoULS />
+			</a>
+			<PauseButton muted={index === 1} client:load />
+		</div>
+	</div>
+</div>
+
+<style>
+	.swiper-slide::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: linear-gradient(rgba(0, 0, 0, 0.6), transparent, rgba(0, 0, 0, 0.5));
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+<script>
+	const activeVideo = document.querySelector('.swiper-slide-active')
+	activeVideo.children[0].muted = true
+</script>

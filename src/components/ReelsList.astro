@@ -1,0 +1,32 @@
+---
+import { architects } from '../data/architects.data.js'
+import Reel from './Reel.astro'
+---
+
+<section class='swiper w-full h-full'>
+	<div class='swiper-wrapper'>
+		{
+			architects.map((architect, index) => (
+				<Reel architect={architect} index={index + 1} total={architects.length} />
+			))
+		}
+	</div>
+</section>
+
+<script>
+	import Swiper from 'swiper'
+	const swiper = new Swiper('.swiper', {
+		loop: true
+	})
+	swiper.on('slideChangeTransitionEnd', function (elements) {
+		const activeElement = elements.slides.find((element) =>
+			element.className.includes('swiper-slide-active')
+		)
+		elements.slides.forEach((element) => {
+			element.children[0].pause()
+			element.children[0].currentTime = 0
+			element.children[0].muted = false
+		})
+		activeElement.children[0].play()
+	})
+</script>
