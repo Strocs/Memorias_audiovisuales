@@ -1,0 +1,40 @@
+---
+const { title, description } = Astro.props
+---
+
+<html lang='es'>
+	<head>
+		<meta charset='utf-8' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+		<meta name='description' content={description} />
+		<title>{title}</title>
+		<link rel='preconnect' href='https://fonts.googleapis.com' />
+		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+		<link
+			href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;700;800;900&display=swap'
+			rel='stylesheet'
+		/>
+		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css' />
+	</head>
+	<body class='w-full relative bg-zinc-950'>
+		<slot />
+	</body>
+
+	<style is:global>
+		* {
+			box-sizing: border-box;
+		}
+		html {
+			font-family: 'Nunito Sans', sans-serif;
+		}
+	</style>
+</html>
+
+<script>
+	// listen change window size event to update values
+	const body = document.querySelector('body')
+	const winHeight = window.innerHeight
+	body.style.setProperty('height', `${winHeight}px`)
+</script>
