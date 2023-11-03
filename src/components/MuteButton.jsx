@@ -3,20 +3,16 @@ import { useEffect, useState } from 'react'
 import { MutedIcon } from './icons/MutedIcon'
 import { SoundIcon } from './icons/SoundIcon'
 
-// FIX: mute button disable swipe
-export const MuteButton = ({ muted }) => {
-	const [isMuted, setIsMuted] = useState(muted)
+export const MuteButton = () => {
+	const [isMuted, setIsMuted] = useState(true)
 
 	useEffect(() => {
-		const activeVideo = document.querySelector('.swiper-slide-active')
-		activeVideo.children[0].muted = isMuted
+		const activeVideo = document.querySelector('.swiper-slide-active').querySelector('video')
+		activeVideo.muted = isMuted
 	}, [isMuted])
-	console.log(isMuted)
+
 	return (
-		<button
-			className='w-full text-white absolute top-0 bottom-0 my-auto z-10'
-			onClick={() => setIsMuted(!isMuted)}
-		>
+		<button className='w-fit h-4' onClick={() => setIsMuted(!isMuted)}>
 			{isMuted ? <MutedIcon /> : <SoundIcon />}
 		</button>
 	)

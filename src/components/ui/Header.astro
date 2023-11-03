@@ -3,12 +3,17 @@ import LogoArqULS from '../icons/LogoArqULS.astro'
 const { absolute } = Astro.props
 ---
 
-<header class=`text-white p-4 flex justify-between ${absolute ? 'absolute top-0 w-full z-10' : ''}`>
-	<div class='w-16 -mt-2'>
+<header
+	class=`text-white md:text-black md:px-10 px-4 py-4 flex justify-between ${absolute ? 'absolute top-0 w-full z-10' : ''}`
+>
+	<a href='/' class='w-16 -mt-2 hover:text-secondary transition-colors duration-150'>
 		<LogoArqULS />
-	</div>
+	</a>
 	<div class='text-right'>
-		<h1 class='flex flex-col leading-none text-2xl uppercase tracking-widest'><span class='font-normal'>Memorias</span> <b class='font-black'>Audiovisuales</b></h1>
+		<h1 class='flex flex-col leading-none text-2xl uppercase tracking-widest'>
+			<span class='font-normal'>Memorias</span>
+			<b class='font-black'>Audiovisuales</b>
+		</h1>
 		<h3 class='text-sm'>Escuela de Arquitectura U. de La Serena</h3>
 	</div>
 </header>

@@ -17,7 +17,7 @@ export const architects = [
 			'https://images.adsttc.com/media/images/649e/c88c/cb9c/465d/b291/5caa/slideshow/m1-1.jpg?1688127652',
 			'https://images.adsttc.com/media/images/649e/c7bd/5921/186c/68fb/16c8/slideshow/m5-5.jpg?1688127447'
 		],
-		reel: '/mock1.mp4',
+		reel: 'KRntP-q_R9s',
 		video: '/mock1.mp4'
 	},
 	{
@@ -36,7 +36,7 @@ export const architects = [
 			'https://images.adsttc.com/media/images/649e/c88c/cb9c/465d/b291/5caa/slideshow/m1-1.jpg?1688127652',
 			'https://images.adsttc.com/media/images/649e/c7bd/5921/186c/68fb/16c8/slideshow/m5-5.jpg?1688127447'
 		],
-		reel: '/mock2.mp4',
+		reel: 'KRntP-q_R9s',
 		video: '/mock2.mp4'
 	},
 	{
@@ -54,7 +54,7 @@ export const architects = [
 			'https://images.adsttc.com/media/images/649e/c88c/cb9c/465d/b291/5caa/slideshow/m1-1.jpg?1688127652',
 			'https://images.adsttc.com/media/images/649e/c7bd/5921/186c/68fb/16c8/slideshow/m5-5.jpg?1688127447'
 		],
-		reel: '/mock3.mp4',
+		reel: 'KRntP-q_R9s',
 		video: '/mock3.mp4'
 	},
 	{
@@ -72,7 +72,7 @@ export const architects = [
 			'https://images.adsttc.com/media/images/649e/c88c/cb9c/465d/b291/5caa/slideshow/m1-1.jpg?1688127652',
 			'https://images.adsttc.com/media/images/649e/c7bd/5921/186c/68fb/16c8/slideshow/m5-5.jpg?1688127447'
 		],
-		reel: '/mock4.mp4',
+		reel: 'KRntP-q_R9s',
 		video: '/mock4.mp4'
 	}
 ]

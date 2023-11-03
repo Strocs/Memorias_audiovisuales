@@ -18,23 +18,20 @@ const { title, description } = Astro.props
 		/>
 		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css' />
 	</head>
-	<body class='w-full relative bg-zinc-950'>
+	<body class='w-full h-[100dvh] relative bg-primary'>
 		<slot />
 	</body>
 
 	<style is:global>
-		* {
-			box-sizing: border-box;
-		}
 		html {
 			font-family: 'Nunito Sans', sans-serif;
 		}
 	</style>
 </html>
 
-<script>
+<!-- <script>
 	// listen change window size event to update values
 	const body = document.querySelector('body')
 	const winHeight = window.innerHeight
 	body.style.setProperty('height', `${winHeight}px`)
-</script>
+</script> -->

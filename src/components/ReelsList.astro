@@ -22,11 +22,13 @@ import Reel from './Reel.astro'
 		const activeElement = elements.slides.find((element) =>
 			element.className.includes('swiper-slide-active')
 		)
+		const activeVideo = activeElement.querySelector('video')
 		elements.slides.forEach((element) => {
-			element.children[0].pause()
-			element.children[0].currentTime = 0
-			element.children[0].muted = false
+			const video = element.querySelector('video')
+			video.pause()
+			video.currentTime = 0
+			video.muted = false
 		})
-		activeElement.children[0].play()
+		activeVideo.play()
 	})
 </script>

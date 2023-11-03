@@ -5,7 +5,7 @@ export const SoundIcon = () => {
 			height='24px'
 			viewBox='0 0 24 24'
 			strokeWidth='1.5'
-			fill='none'
+			fill='currentColor'
 			xmlns='http://www.w3.org/2000/svg'
 			color='currentColor'
 		>

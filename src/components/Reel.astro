@@ -1,39 +1,52 @@
 ---
 import LogoULS from './icons/LogoULS.astro'
-import { PauseButton } from './PauseButton'
 import { MuteButton } from './MuteButton'
+import ButtonOrLink from './ui/ButtonOrLink.astro'
 
 const { architect, index, total } = Astro.props
-const { id, name, projectName, projectYear } = architect
+const { id, name, projectName, projectYear, reel } = architect
 ---
 
-<div class='swiper-slide relative text-white'>
-	<video class='object-cover h-full w-full' loop>
-		<source src={architect.reel} type='video/mp4' />
-	</video>
-	<!-- <MuteButton muted={index === 1} client:load /> -->
-	<div class='absolute bottom-0 w-full h-fit z-10 grid gap-4 p-4'>
-		<div class='flex gap-4'>
-			<div class='w-full'>
-				<h2 class='text-xl font-semibold'>{name}</h2>
-				<p class='text-sm leading-tight'>{projectName} - <b>{projectYear}</b></p>
-			</div>
-			<p class='w-fit shrink-0 text-lg self-end'>{index} / {total}</p>
+<div class='swiper-slide text-white md:py-20 md:flex justify-center items-center w-full'>
+	<!-- <iframe width='1904' height='804' src={`https://www.youtube.com/embed/${reel}&loop=1`}> </iframe> -->
+	<div class='h-full w-full md:w-fit relative rounded-xl flex items-end'>
+		<div class='bg-shadow relative w-fit rounded-xl md:overflow-hidden shadow-xl'>
+			<video class='object-cover h-full max-w-md aspect-[9/16]' loop>
+				<source src={architect.video} type='video/mp4' />
+			</video>
 		</div>
-		<div class='flex items-center relative justify-between'>
-			<a class='bg-white text-zinc-950 rounded-xl px-3 py-1 font-medium h-fit' href='#'>
-				Más Info
-			</a>
-			<a href='#' class='h-10 w-10 absolute left-0 right-0 mx-auto'>
-				<LogoULS />
-			</a>
-			<PauseButton muted={index === 1} client:load />
+		<!-- <MuteButton muted={index === 1} client:load /> -->
+		<div
+			class='md:text-primary absolute md:static bottom-0 w-full md:w-[28rem] h-fit z-10 grid gap-4 p-4 items-end'
+		>
+			<div class='flex md:flex-col gap-0'>
+				<div class='w-full'>
+					<h2 class='text-xl md:text-3xl md:font-bold font-semibold'>{name}</h2>
+					<p class='text-sm md:text-base leading-tight md:leading-none'>
+						{projectName} - <b>{projectYear}</b>
+					</p>
+				</div>
+				<p
+					class='w-fit shrink-0 text-lg self-end md:absolute md:bottom-0 md:right-1/2 md:text-white md:p-4'
+				>
+					{index} / {total}
+				</p>
+			</div>
+			<div
+				class='flex md:flex-col md:items-start items-center justify-between md:justify-normal md:gap-4'
+			>
+				<ButtonOrLink element='link' href='/'>Más Info</ButtonOrLink>
+				<a href='#' class='h-10 w-10 absolute left-0 right-0 md:-bottom-16 mx-auto md:hidden'>
+					<LogoULS />
+				</a>
+				<MuteButton client:load />
+			</div>
 		</div>
 	</div>
 </div>
 
 <style>
-	.swiper-slide::after {
+	.bg-shadow::after {
 		content: '';
 		position: absolute;
 		top: 0;
@@ -45,6 +58,6 @@ const { id, name, projectName, projectYear } = architect
 </style>
 
 <script>
-	const activeVideo = document.querySelector('.swiper-slide-active')
-	activeVideo.children[0].muted = true
+	const activeVideo = document.querySelector('.swiper-slide-active').querySelector('video')
+	activeVideo.muted = true
 </script>
