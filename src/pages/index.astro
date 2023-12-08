@@ -11,11 +11,11 @@ import LogoULS from '@components/icons/LogoULS.astro'
 	description=''
 >
 	<Header absolute />
-	<main class='swiper-footer h-full w-full overflow-x-hidden'>
-		<div class='swiper-wrapper flex h-full'>
-			<div class='swiper-slide shrink-0'>
-				<div class='swiper-reel h-[100dvh] w-full overflow-hidden'>
-					<article class='swiper-wrapper flex flex-col w-full'>
+	<main class='swiper-footer swiper h-full w-full'>
+		<div class='swiper-wrapper'>
+			<div class='swiper-slide'>
+				<div class='swiper-reel swiper h-full w-full'>
+					<article class='swiper-wrapper'>
 						{
 							architects.map((architect, i) => (
 								<Reel info={architect} index={i + 1} total={architects.length} />
@@ -25,10 +25,13 @@ import LogoULS from '@components/icons/LogoULS.astro'
 				</div>
 			</div>
 			<footer
-				class='h-[100dvh] w-full shrink-0 swiper-slide bg-primary text-white flex flex-col items-center justify-center gap-6'
+				class='swiper-slide bg-primary text-white flex flex-col items-center gap-6 justify-center'
 			>
 				<p class='font-title'>Proyecto financiado por:</p>
 				<div class='w-40 h-40'><LogoULS /></div>
+				<p class='font-paragraph bottom-6 whitespace-nowrap font-light absolute'>
+					Desarrollado por <a href='' class='text-blue-500 hover:text-white duration-150'>Strocs</a>
+				</p>
 			</footer>
 		</div>
 	</main>
@@ -36,14 +39,25 @@ import LogoULS from '@components/icons/LogoULS.astro'
 
 <script>
 	import Swiper from 'swiper'
-	import { Navigation } from 'swiper/modules'
+	import { Navigation, Keyboard, Mousewheel } from 'swiper/modules'
 
-	const swiperFooter = new Swiper('.swiper-footer', {})
+	const swiperFooter = new Swiper('.swiper-footer', {
+		modules: [Keyboard],
+		keyboard: {
+			enabled: true,
+			onlyInViewport: false
+		}
+	})
 
 	const swiperReel = new Swiper('.swiper-reel', {
-		modules: [Navigation],
+		modules: [Navigation, Keyboard, Mousewheel],
+		keyboard: {
+			enabled: true,
+			onlyInViewport: false
+		},
 		direction: 'vertical',
-		loop: true
+		loop: true,
+		mousewheel: true
 	})
 
 	swiperReel.on('slideChangeTransitionEnd', function ({ slides }) {

@@ -12,12 +12,10 @@ const { info, index, total } = Astro.props
 const { name, projectName, projectYear, video } = info
 ---
 
-<section
-	class='swiper-slide text-white md:py-20 flex justify-center items-center w-full shrink-0 bg-primary'
->
+<section class='swiper-slide text-white bg-primary'>
 	<div class='h-full w-full relative rounded-xl flex items-center'>
 		<section
-			class='bg-shadow relative w-fit rounded-xl md:overflow-hidden xl:shadow-xl after:content-[""] after:absolute after:bottom-0 after:w-full after:h-1/2 after:bg-gradient-to-b after:from-transparent after:from-20% after:to-primary before:content-[""] before:absolute before:top-0 before:w-full before:h-1/2 before:bg-gradient-to-t before:from-transparent before:from-20% before:to-primary'
+			class='bg-shadow relative w-full mx-auto h-fit rounded-xl md:overflow-hidden xl:shadow-xl after:content-[""] after:absolute after:-bottom-px after:w-full after:h-1/2 after:bg-gradient-to-b after:from-transparent after:from-20% after:to-primary before:content-[""] before:absolute before:-top-px before:w-full before:h-1/2 before:bg-gradient-to-t before:from-transparent before:from-20% before:to-primary'
 		>
 			<video class='object-cover h-full w-full max-w-md aspect-[9/16]' loop>
 				<source src={video} type='video/mp4' />

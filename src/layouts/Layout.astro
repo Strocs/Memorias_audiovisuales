@@ -36,6 +36,8 @@ const { title, description } = Astro.props
 		<meta name='twitter:title' content='Memoria Audiovisual' />
 		<meta name='twitter:description' content={description} />
 		<meta name='twitter:image' content='OG.png' />
+
+		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' />
 	</head>
 	<body class='w-full h-full min-h-[100dvh] relative'>
 		<slot />
@@ -44,7 +46,7 @@ const { title, description } = Astro.props
 	<style is:global>
 		html {
 			height: 100%;
-			width: 100%;
+			display: relative;
 		}
 	</style>
 </html>

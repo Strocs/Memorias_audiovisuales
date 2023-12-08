@@ -1,0 +1,16 @@
+---
+interface Props {
+	as?: 'a' | 'button'
+	class?: string
+	[x: string]: any
+}
+
+const { as: Element = 'button', class: customStyles, ...props }: Props = Astro.props
+
+const defaultStyles =
+	'bg-white md:bg-primary md:text-white text-primary rounded-full px-3 font-title font-medium'
+---
+
+<Element class:list={[defaultStyles, customStyles]} {...props}>
+	<slot />
+</Element>
