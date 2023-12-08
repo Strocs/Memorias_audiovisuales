@@ -1,12 +1,62 @@
 ---
-import Layout from '../layout/Layout.astro'
-import Header from '../components/ui/Header.astro'
-import ReelsList from '../components/ReelsList.astro'
+import Layout from '@layouts/Layout.astro'
+import Header from '@components/ui/Header.astro'
+import { architects } from '@data/architects.data'
+import Reel from '@components/Reel.astro'
+import LogoULS from '@components/icons/LogoULS.astro'
 ---
 
-<Layout title='Memoria Audiovisual'>
+<Layout
+	title='Memorias Audiovisuales | Escuela de Arquitectura, Universidad de La Serena'
+	description=''
+>
 	<Header absolute />
-	<main class='h-full w-full bg-white'>
-		<ReelsList />
+	<main class='swiper-footer h-full w-full overflow-y-hidden'>
+		<div class='swiper-wrapper flex flex-col w-full'>
+			<div class='swiper-slide'>
+				<div class='swiper-reel h-[100dvh] w-full overflow-hidden'>
+					<article class='swiper-wrapper flex h-full'>
+						{
+							architects.map((architect, i) => (
+								<Reel info={architect} index={i + 1} total={architects.length} />
+							))
+						}
+					</article>
+				</div>
+			</div>
+			<footer
+				class='h-[100dvh] w-full swiper-slide bg-primary text-white flex flex-col items-center justify-center gap-6'
+			>
+				<p class='font-title'>Proyecto financiado por:</p>
+				<div class='w-40 h-40'><LogoULS /></div>
+			</footer>
+		</div>
 	</main>
 </Layout>
+
+<script>
+	import Swiper from 'swiper'
+	import { Navigation } from 'swiper/modules'
+
+	const swiperFooter = new Swiper('.swiper-footer', {
+		direction: 'vertical'
+	})
+
+	const swiperReel = new Swiper('.swiper-reel', {
+		modules: [Navigation],
+		loop: true
+	})
+
+	swiperReel.on('slideChangeTransitionEnd', function ({ slides }) {
+		const activeSlide = slides.find((reel) => reel.className.includes('swiper-slide-active'))
+		const activeVideo = activeSlide?.querySelector('video') as HTMLVideoElement
+
+		slides.forEach((slide) => {
+			const video = slide.querySelector('video') as HTMLVideoElement
+			if (activeSlide === video) return activeVideo.play()
+			video.pause()
+			video.currentTime = 0
+			video.muted = false
+		})
+	})
+</script>

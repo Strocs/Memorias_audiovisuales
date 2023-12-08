@@ -1,11 +1,12 @@
 export const MutedIcon = () => {
 	return (
 		<svg
-			width='24px'
-			height='24px'
+			width='20'
+			height='20'
 			viewBox='0 0 24 24'
 			strokeWidth='1.5'
-			fill='currentColor'
+			// fill='currentColor'
+			stroke='currentColor'
 			xmlns='http://www.w3.org/2000/svg'
 		>
 			<g clipPath='url(#sound-off_svg__clip0_3173_16686)' stroke='currentColor' strokeWidth='1.5'>

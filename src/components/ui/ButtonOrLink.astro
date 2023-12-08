@@ -1,22 +1,24 @@
 ---
-const { element, onClick, href, props } = Astro.props
+import type { HTMLProps } from 'react'
+
+interface Props {
+	as: 'button' | 'link'
+	props?: HTMLProps<any>
+}
+
+const { as } = Astro.props
+
+const styles =
+	'bg-white md:bg-primary md:text-white text-primary rounded-xl px-3 h-fit font-paragraph'
 ---
 
 {
-	element === 'btn' ? (
-		<button
-			onclick={onClick}
-			class='bg-white md:bg-primary md:text-white text-primary rounded-xl px-3 py-1 font-medium h-fit'
-			{...props}
-		>
+	as === 'button' ? (
+		<button class={styles} {...Astro.props}>
 			<slot />
 		</button>
 	) : (
-		<a
-			class='bg-white md:bg-primary md:text-white text-primary rounded-xl px-3 py-1 font-medium h-fit'
-			href={href}
-			{...props}
-		>
+		<a class={styles} {...Astro.props}>
 			<slot />
 		</a>
 	)

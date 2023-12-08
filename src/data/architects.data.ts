@@ -1,6 +1,8 @@
 // year, description, images, videos are fake info
 
-export const architects = [
+import type { Architect } from "@types/architect"
+
+export const architects: Architect[] = [
 	{
 		id: 'diego-alvarado',
 		name: 'Diego Alvarado',

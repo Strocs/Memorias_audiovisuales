@@ -1,0 +1,54 @@
+---
+import { MuteButton } from './MuteButton'
+import LogoULS from './icons/LogoULS.astro'
+import { PlayIcon } from './icons/PlayIcon'
+import ButtonOrLink from './ui/ButtonOrLink.astro'
+
+interface Props {
+	name: string
+	projectName: string
+	projectYear: string
+	index: number
+	total: number
+}
+
+const { name, projectName, projectYear, index, total } = Astro.props
+---
+
+<aside
+	class='md:text-primary absolute md:static bottom-0 w-full md:w-[28rem] h-fit z-10 grid gap-4 p-4 items-end'
+>
+	<article class='flex md:flex-col gap-2'>
+		<section class='w-full'>
+			<h2 class='text-xl md:text-3xl md:font-bold font-semibold font-subtitle tracking-wide'>
+				{name}
+			</h2>
+			<p class='text-sm md:text-base leading-tight md:leading-none font-paragraph font-light'>
+				{projectName} - <b>{projectYear}</b>
+			</p>
+		</section>
+		<!-- <p
+			class='w-fit shrink-0 text-lg self-end md:absolute md:bottom-0 md:right-1/2 md:text-white md:p-4 font-paragraph font-light mr-2 leading-none'
+		>
+			{index} / {total}
+		</p> -->
+	</article>
+	<footer
+		class='flex md:flex-col md:items-start items-center justify-between md:justify-normal md:gap-4'
+	>
+		<ButtonOrLink as='link' href='/'>Más Info</ButtonOrLink>
+		<p class='text-lg font-paragraph font-light leading-none'>
+			{index} / {total}
+		</p>
+		<!-- <div class='absolute mx-auto right-0 left-0 w-fit'>
+			<MuteButton client:load />
+		</div> -->
+		<div class='flex gap-4'>
+			<PlayIcon client:load />
+			<MuteButton client:load />
+		</div>
+		<!-- <a href='#' class='h-12 w-12 md:hidden'>
+			<LogoULS />
+		</a> -->
+	</footer>
+</aside>

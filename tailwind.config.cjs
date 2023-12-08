@@ -9,6 +9,11 @@ module.exports = {
 				lilac: '#8f87a8',
 				primary: '#17171b',
 				secondary: '#b7b7bb'
+			},
+			fontFamily: {
+				title: ['Nunito Sans', 'system-ui', 'sans-serif'],
+				subtitle: ['Mukta Vaani', 'system-ui', 'sans-serif'],
+				paragraph: ['Kanit', 'system-ui', 'sans-serif']
 			}
 		}
 	},
