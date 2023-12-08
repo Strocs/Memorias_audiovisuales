@@ -5,23 +5,27 @@ const { absolute } = Astro.props
 ---
 
 <header
-	class=`text-white md:text-black md:px-10 px-4 py-4 flex justify-between ${absolute ? 'absolute top-0 w-full z-10' : ''}`
+	class=`text-white md:text-black md:px-10 px-4 pt-4 flex justify-between ${absolute ? 'absolute top-0 w-full z-10' : ''}`
 >
-	<a href='https://userena.cl/' target='_blank' class='w-[3.1rem]'>
+	<a href='https://userena.cl/' target='_blank' class='w-[3rem]'>
 		<LogoULS />
 	</a>
-	<a href='/' class='text-right -mr-5'>
-		<h1 class='flex flex-col leading-none text-xl uppercase tracking-widest font-title'>
-			<span class='font-normal'>Memorias</span>
-			<b class='font-black'>Audiovisuales</b>
-		</h1>
-		<h2 class='absolute text-xs font-light font-title'>Escuela de Arquitectura U. de La Serena</h2>
-	</a>
-	<a
-		href='https://arquls.userena.cl/'
-		target='_blank'
-		class='w-[3.1rem] -mt-2 hover:text-secondary transition-colors duration-150'
-	>
-		<LogoArqULS />
-	</a>
+	<div class='flex gap-1'>
+		<a href='/' class='text-right'>
+			<h1 class='text-xl uppercase leading-none tracking-widest font-title'>
+				Memorias
+				<strong class='font-black block'>Audiovisuales</strong>
+			</h1>
+			<h2 class='absolute text-xs font-light font-title leading-none'>
+				Escuela de Arquitectura U. de La Serena
+			</h2>
+		</a>
+		<a
+			href='https://arquls.userena.cl/'
+			target='_blank'
+			class='w-[2.8rem] -mt-[5px] block hover:text-secondary transition-colors duration-150'
+		>
+			<LogoArqULS />
+		</a>
+	</div>
 </header>
