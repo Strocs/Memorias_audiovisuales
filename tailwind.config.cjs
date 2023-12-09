@@ -8,8 +8,8 @@ module.exports = {
 				'pale-green': '#5a7869',
 				lilac: '#8f87a8',
 				primary: '#17171b',
-				secondary: '#b7b7bb'
-				// white: '#f5fffa'
+				secondary: '#b7b7bb',
+				white: '#f5f5fa'
 			},
 			fontFamily: {
 				title: ['Nunito Sans', 'system-ui', 'sans-serif'],

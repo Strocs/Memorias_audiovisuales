@@ -26,10 +26,12 @@ const {
 } = Astro.props
 ---
 
-<Layout title=''>
+<Layout title={name + ' - ' + project_name}>
 	<Header absolute />
-	<main>
-		<h1>{name}</h1>
+	<main class='h-full px-10 pt-28 landscape:text-primary text-white'>
+		<h1>{full_name}</h1>
+		<h2>{project_name} - {project_year}</h2>
+		<p>{project_description}</p>
 	</main>
-	<Footer />
+	<Footer class='h-1/2 [clip-path:polygon(0%_20%,100%_0%,100%_100%,0%_100%);]' />
 </Layout>

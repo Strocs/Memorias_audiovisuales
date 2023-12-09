@@ -1,5 +1,3 @@
-// year, description, images, videos are fake info
-
 import type { Graduates } from '../types/graduates'
 
 export const GRADUATES: Graduates = [
