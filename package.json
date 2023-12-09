@@ -23,7 +23,7 @@
     "prettier-plugin-astro": "0.12.2",
     "standard": "^17.1.0"
   },
-  "name": "memorias-audiovisuales",
+  "name": "memoria-audiovisual-uls",
   "scripts": {
     "astro": "astro",
     "build": "astro build",
