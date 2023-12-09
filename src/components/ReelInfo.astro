@@ -1,4 +1,5 @@
 ---
+import { getPath } from '@utils/getPath'
 import { MuteButton } from './MuteButton'
 import { PlayButton } from './PlayButton'
 import Button from './ui/Button.astro'
@@ -15,27 +16,39 @@ const { name, projectName, projectYear, index, total } = Astro.props
 ---
 
 <aside
-	class='absolute landscape:shrink-0 landscape:relative landscape:text-primary bottom-0 w-full landscape:max-w-[24rem] h-fit landscape:h-full landscape:justify-between z-10 flex flex-col gap-4 p-4 items-end'
+	class:list={[
+		'absolute bottom-0 w-full h-fit z-10 flex flex-col gap-4 p-4 items-end',
+		'landscape:shrink-0 landscape:relative landscape:text-primary landscape:max-w-[24rem] landscape:h-full landscape:justify-between'
+	]}
 >
 	<article class='w-full'>
-		<h2 class='text-2xl xl:text-4xl xl:font-black font-semibold font-subtitle tracking-wide'>
+		<h2
+			class:list={[
+				'text-2xl font-semibold font-subtitle tracking-wide',
+				'xl:text-4xl xl:font-black'
+			]}
+		>
 			{name}
 		</h2>
-		<p class='leading-tight xl:leading-none font-paragraph font-light max-w-md'>
+		<p class:list={['leading-tight font-paragraph font-light max-w-md', 'xl:leading-none']}>
 			{projectName} - <b>{projectYear}</b>
 		</p>
 	</article>
 	<footer
-		class='grid grid-flow-col landscape:grid-flow-row landscape:grid-rows-[1fr_auto_auto] landscape:h-full landscape:items-start items-center justify-between w-full landscape:justify-start landscape:gap-4'
+		class:list={[
+			'grid grid-flow-col items-center justify-between w-full',
+			'landscape:grid-flow-row landscape:grid-rows-[1fr_auto_auto] landscape:h-full landscape:items-start landscape:justify-start landscape:gap-4'
+		]}
 	>
-		<Button as='a' href='/'>Ver más</Button>
-		<p class='text-lg font-paragraph font-light leading-none landscape:self-end'>
+		<Button as='a' href={`${getPath(name)}?project=${getPath(projectName)}`}>Ver más</Button>
+		<p class:list={['text-lg font-paragraph font-light leading-none', 'landscape:self-end']}>
 			{index} / {total}
 		</p>
 
-		<div class='flex gap-4 landscape:self-end items-center landscape:-ml-2'>
+		<div class:list={['flex gap-4 items-center', 'landscape:self-end landscape:-ml-2']}>
 			<PlayButton client:load />
 			<MuteButton client:load />
 		</div>
 	</footer>
 </aside>
+ @utils/getPath @utils/getPathFrom @utils/getPath

@@ -2,17 +2,27 @@
 import LogoULS from '@components/icons/LogoULS.astro'
 import LogoArqULS from '../icons/LogoArqULS.astro'
 import { SITE_INFO } from '@data/SITE_INFO.data'
+
 const { absolute } = Astro.props
 
 const { title, subtitle } = SITE_INFO
 
 const titleSplitted = title.split(' ')
+const isAbsolute = absolute ? 'absolute top-0 w-full z-10' : ''
 ---
 
 <header
-	class=`text-white landscape:text-black landscape:px-10 px-4 pt-4 flex justify-between ${absolute ? 'absolute top-0 w-full z-10' : ''}`
+	class:list={[
+		'text-white px-4 pt-4 flex justify-between',
+		'landscape:text-black landscape:px-10',
+		isAbsolute
+	]}
 >
-	<a href='https://userena.cl/' target='_blank' class='w-[3rem] hover:text-blue-800 duration-150'>
+	<a
+		href='https://userena.cl/'
+		target='_blank'
+		class:list='w-[3rem] hover:text-blue-800 duration-150'
+	>
 		<LogoULS />
 	</a>
 	<div class='flex gap-1'>

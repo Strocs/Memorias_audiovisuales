@@ -1,0 +1,23 @@
+---
+import LogoULS from '@components/icons/LogoULS.astro'
+interface Props {
+	class?: string
+}
+const { class: customStyles } = Astro.props
+---
+
+<footer
+	class:list={[
+		customStyles,
+		'bg-primary text-white flex flex-col items-center gap-6 justify-center'
+	]}
+>
+	<p class='font-title'>Proyecto financiado por:</p>
+	<div class='w-40 h-40'><LogoULS /></div>
+	<p class='font-paragraph bottom-6 whitespace-nowrap font-light absolute'>
+		Desarrollado por <a
+			href='https://github.com/Strocs'
+			class='text-blue-500 hover:text-white duration-150'>Strocs</a
+		>
+	</p>
+</footer>
