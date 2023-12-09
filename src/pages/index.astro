@@ -30,7 +30,10 @@ import LogoULS from '@components/icons/LogoULS.astro'
 				<p class='font-title'>Proyecto financiado por:</p>
 				<div class='w-40 h-40'><LogoULS /></div>
 				<p class='font-paragraph bottom-6 whitespace-nowrap font-light absolute'>
-					Desarrollado por <a href='' class='text-blue-500 hover:text-white duration-150'>Strocs</a>
+					Desarrollado por <a
+						href='https://github.com/Strocs'
+						class='text-blue-500 hover:text-white duration-150'>Strocs</a
+					>
 				</p>
 			</footer>
 		</div>
@@ -66,7 +69,7 @@ import LogoULS from '@components/icons/LogoULS.astro'
 
 		slides.forEach((slide) => {
 			const video = slide.querySelector('video') as HTMLVideoElement
-			if (activeSlide === video) return activeVideo.play()
+			if (activeVideo === video) return activeVideo.play()
 			video.pause()
 			video.currentTime = 0
 			video.muted = false

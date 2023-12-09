@@ -1,8 +1,8 @@
 export const SoundIcon = () => {
 	return (
 		<svg
-			width='24px'
-			height='24px'
+			width='18'
+			height='18'
 			viewBox='0 0 24 24'
 			strokeWidth='1.5'
 			fill='currentColor'

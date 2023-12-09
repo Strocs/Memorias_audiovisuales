@@ -12,7 +12,7 @@ export const MuteButton = () => {
 	}, [isMuted])
 
 	return (
-		<button type='button' onClick={() => setIsMuted(!isMuted)}>
+		<button type='button' className='p-1 h-fit rounded-full' onClick={() => setIsMuted(!isMuted)}>
 			{isMuted ? <MutedIcon /> : <SoundIcon />}
 		</button>
 	)

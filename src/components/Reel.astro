@@ -12,16 +12,25 @@ const { info, index, total } = Astro.props
 const { name, projectName, projectYear, video } = info
 ---
 
-<section class='swiper-slide text-white bg-primary'>
-	<div class='h-full w-full relative rounded-xl flex items-center'>
+<section
+	class='swiper-slide text-white bg-primary landscape:bg-white flex items-center justify-center'
+>
+	<div
+		class='h-full w-fit sm:h-fit landscape:h-full gap-4 relative flex justify-center items-center max-w-md landscape:max-w-full landscape:pt-24 landscape:pb-12 overflow-hidden landscape:overflow-visible'
+	>
 		<section
-			class='bg-shadow relative w-full mx-auto h-fit rounded-xl md:overflow-hidden xl:shadow-xl after:content-[""] after:absolute after:-bottom-px after:w-full after:h-1/2 after:bg-gradient-to-b after:from-transparent after:from-20% after:to-primary before:content-[""] before:absolute before:-top-px before:w-full before:h-1/2 before:bg-gradient-to-t before:from-transparent before:from-20% before:to-primary'
+			class:list={[
+				'bg-shadow shrink-0 relative w-full h-fit overflow-hidden',
+				'sm:rounded-2xl',
+				'landscape:h-full landscape:w-fit landscape:shadow-lg landscape:shadow-secondary landscape:after:hidden landscape:before:hidden',
+				'before:content-[""] before:absolute before:-top-px before:w-full before:h-1/2 before:bg-gradient-to-t before:from-transparent before:from-20% before:to-primary',
+				'after:content-[""] after:absolute after:-bottom-px after:w-full after:h-1/2 after:bg-gradient-to-b after:from-transparent after:from-20% after:to-primary'
+			]}
 		>
-			<video class='object-cover h-full w-full max-w-md aspect-[9/16]' loop>
+			<video class='object-cover h-full w-fit aspect-[9/16] sm:scale-[1.01]' loop>
 				<source src={video} type='video/mp4' />
 			</video>
 		</section>
-		<!-- <MuteButton muted={index === 1} client:load /> -->
 		<ReelInfo
 			name={name}
 			projectName={projectName}
