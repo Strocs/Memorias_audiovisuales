@@ -1,29 +1,36 @@
 ---
 import LogoULS from '@components/icons/LogoULS.astro'
 import LogoArqULS from '../icons/LogoArqULS.astro'
+import { SITE_INFO } from '@data/SITE_INFO.data'
 const { absolute } = Astro.props
+
+const { title, subtitle } = SITE_INFO
+
+const titleSplitted = title.split(' ')
 ---
 
 <header
 	class=`text-white landscape:text-black landscape:px-10 px-4 pt-4 flex justify-between ${absolute ? 'absolute top-0 w-full z-10' : ''}`
 >
-	<a href='https://userena.cl/' target='_blank' class='w-[3rem]'>
+	<a href='https://userena.cl/' target='_blank' class='w-[3rem] hover:text-blue-800 duration-150'>
 		<LogoULS />
 	</a>
 	<div class='flex gap-1'>
-		<a href='/' class='text-right'>
+		<a href='/' class='text-right group'>
 			<h1 class='text-xl uppercase leading-none tracking-widest font-title'>
-				Memorias
-				<strong class='font-black block'>Audiovisuales</strong>
+				{titleSplitted[0]}
+				<strong class='font-black block group-hover:text-red-600 duration-150'
+					>{titleSplitted[1]}</strong
+				>
 			</h1>
-			<h2 class='absolute text-xs font-light font-title leading-none'>
-				Escuela de Arquitectura U. de La Serena
+			<h2 class='absolute text-xs font-light font-paragraph leading-none tracking-widest'>
+				{subtitle}
 			</h2>
 		</a>
 		<a
 			href='https://arquls.userena.cl/'
 			target='_blank'
-			class='w-[2.8rem] -mt-[5px] block hover:text-secondary transition-colors duration-150'
+			class='w-[2.8rem] -mt-[5px] block hover:text-red-600 transition-colors duration-150'
 		>
 			<LogoArqULS />
 		</a>

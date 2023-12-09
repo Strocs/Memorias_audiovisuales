@@ -8,7 +8,7 @@ interface Props {
 const { as: Element = 'button', class: customStyles, ...props }: Props = Astro.props
 
 const defaultStyles =
-	'bg-transparent landscape:bg-primary text-white ring-1 ring-white rounded-full px-3 font-title font-medium'
+	'bg-transparent landscape:bg-primary text-white ring-1 ring-white landscape:ring-primary rounded-full px-3 font-title font-medium hover:bg-transparent hover:text-primary duration-150 '
 ---
 
 <Element class:list={[defaultStyles, customStyles]} {...props}>
