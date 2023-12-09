@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Layout from '@layouts/Layout.astro'
+import Header from '@components/ui/Header.astro'
+import Footer from '@components/ui/Footer.astro'
+import { GRADUATES } from '@data/GRADUATES.data'
+import { getPath } from '@utils/getPath'
+
+export const getStaticPaths = (() => {
+	return GRADUATES.map((graduate) => {
+		return {
+			params: { graduate: getPath(graduate.name) },
+			props: { ...graduate }
+		}
+	})
+}) satisfies GetStaticPaths
+
+const {
+	name,
+	full_name,
+	project_name,
+	project_year,
+	project_description,
+	project_images,
+	video_id
+} = Astro.props
+---
+
+<Layout title=''>
+	<Header absolute />
+	<main>
+		<h1>{name}</h1>
+	</main>
+	<Footer />
+</Layout>

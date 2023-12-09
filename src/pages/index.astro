@@ -3,7 +3,7 @@ import Layout from '@layouts/Layout.astro'
 import Header from '@components/ui/Header.astro'
 import { GRADUATES } from '@data/GRADUATES.data'
 import Reel from '@components/Reel.astro'
-import LogoULS from '@components/icons/LogoULS.astro'
+import Footer from '@components/ui/Footer.astro'
 ---
 
 <Layout title='Escuela de Arquitectura, Universidad de La Serena'>
@@ -21,18 +21,7 @@ import LogoULS from '@components/icons/LogoULS.astro'
 					</article>
 				</div>
 			</div>
-			<footer
-				class='swiper-slide bg-primary text-white flex flex-col items-center gap-6 justify-center'
-			>
-				<p class='font-title'>Proyecto financiado por:</p>
-				<div class='w-40 h-40'><LogoULS /></div>
-				<p class='font-paragraph bottom-6 whitespace-nowrap font-light absolute'>
-					Desarrollado por <a
-						href='https://github.com/Strocs'
-						class='text-blue-500 hover:text-white duration-150'>Strocs</a
-					>
-				</p>
-			</footer>
+			<Footer class='swiper-slide' />
 		</div>
 	</main>
 </Layout>
