@@ -1,15 +1,12 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Header from '@components/ui/Header.astro'
-import { architects } from '@data/architects.data'
+import { GRADUATES } from '@data/GRADUATES.data'
 import Reel from '@components/Reel.astro'
 import LogoULS from '@components/icons/LogoULS.astro'
 ---
 
-<Layout
-	title='Memorias Audiovisuales | Escuela de Arquitectura, Universidad de La Serena'
-	description='Entrevistas a titulados de Arquitectura de la Universidad de La Serena, en donde relatan lo que fue su proceso de titulación y cómo lograron entender a su manera lo que es arquitectura.'
->
+<Layout title='Escuela de Arquitectura, Universidad de La Serena'>
 	<Header absolute />
 	<main class='swiper-footer swiper h-full w-full'>
 		<div class='swiper-wrapper'>
@@ -17,8 +14,8 @@ import LogoULS from '@components/icons/LogoULS.astro'
 				<div class='swiper-reel swiper h-full w-full'>
 					<article class='swiper-wrapper'>
 						{
-							architects.map((architect, i) => (
-								<Reel info={architect} index={i + 1} total={architects.length} />
+							GRADUATES.map((graduateInfo, i) => (
+								<Reel info={graduateInfo} index={i + 1} total={GRADUATES.length} />
 							))
 						}
 					</article>
