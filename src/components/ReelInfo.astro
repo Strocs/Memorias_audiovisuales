@@ -29,11 +29,11 @@ const { name, projectName, projectYear, index, total } = Astro.props
 		class='grid grid-flow-col landscape:grid-flow-row landscape:grid-rows-[1fr_auto_auto] landscape:h-full landscape:items-start items-center justify-between w-full landscape:justify-start landscape:gap-4'
 	>
 		<Button as='a' href='/'>Ver más</Button>
-		<p class='text-lg font-paragraph font-light leading-none self-end'>
+		<p class='text-lg font-paragraph font-light leading-none landscape:self-end'>
 			{index} / {total}
 		</p>
 
-		<div class='flex gap-4 self-end items-center'>
+		<div class='flex gap-4 landscape:self-end items-center landscape:-ml-2'>
 			<PlayButton client:load />
 			<MuteButton client:load />
 		</div>
