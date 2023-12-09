@@ -1,10 +1,13 @@
 ---
+import { SITE_INFO } from '@data/SITE_INFO.data'
+
 interface Props {
 	title: string
-	description: string
 }
 
-const { title, description } = Astro.props
+const { title: defaultTitle, description, OG_image, site_url } = SITE_INFO
+
+const { title } = Astro.props
 ---
 
 <html lang='es'>
@@ -14,30 +17,29 @@ const { title, description } = Astro.props
 		<meta name='viewport' content='width=device-width' />
 		<meta name='generator' content={Astro.generator} />
 		<meta name='description' content={description} />
-		<title>{title}</title>
+		<title>{defaultTitle + ' | ' + title}</title>
 		<link rel='preconnect' href='https://fonts.googleapis.com' />
 		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
 		<link
 			href='https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&family=Nunito+Sans:wght@200;300;400;500;600;700;800;900;1000&display=swap'
 			rel='stylesheet'
 		/>
+		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' />
 
 		<!-- Facebook Meta Tags -->
-		<meta property='og:url' content='https://memorias-audiovisuales.vercel.app/' />
+		<meta property='og:url' content={site_url} />
 		<meta property='og:type' content='website' />
-		<meta property='og:title' content='Memorias Audiovisuales' />
+		<meta property='og:title' content={defaultTitle} />
 		<meta property='og:description' content={description} />
-		<meta property='og:image' content='/OG.png' />
+		<meta property='og:image' content={OG_image} />
 
 		<!-- Twitter Meta Tags -->
 		<meta name='twitter:card' content='summary_large_image' />
-		<meta property='twitter:domain' content='memorias-audiovisuales.vercel.app' />
-		<meta property='twitter:url' content='https://memorias-audiovisuales.vercel.app/' />
-		<meta name='twitter:title' content='Memoria Audiovisual' />
+		<meta property='twitter:domain' content={site_url.replace('https://', '')} />
+		<meta property='twitter:url' content={site_url} />
+		<meta name='twitter:title' content={defaultTitle} />
 		<meta name='twitter:description' content={description} />
-		<meta name='twitter:image' content='/OG.png' />
-
-		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' />
+		<meta name='twitter:image' content={OG_image} />
 	</head>
 	<body class='w-full h-full min-h-[100dvh] relative'>
 		<slot />
