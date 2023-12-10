@@ -3,8 +3,11 @@ import type { GetStaticPaths } from 'astro'
 import Layout from '@layouts/Layout.astro'
 import Header from '@components/ui/Header.astro'
 import Footer from '@components/ui/Footer.astro'
-import { GRADUATES } from '@data/GRADUATES.data'
+import Paragraph from '@components/ui/Paragraph.astro'
+import { GRADUATES } from '@data/GRADUATES'
 import { getPath } from '@utils/getPath'
+import { YouTube } from '@astro-community/astro-embed-youtube'
+import { Image } from 'astro:assets'
 
 export const getStaticPaths = (() => {
 	return GRADUATES.map((graduate) => {
@@ -24,14 +27,44 @@ const {
 	project_images,
 	video_id
 } = Astro.props
+
+console.log(project_images)
 ---
 
 <Layout title={name + ' - ' + project_name}>
-	<Header absolute />
-	<main class='h-full px-10 pt-28 landscape:text-primary text-white'>
-		<h1>{full_name}</h1>
-		<h2>{project_name} - {project_year}</h2>
-		<p>{project_description}</p>
+	<Header />
+	<main
+		class:list={[
+			'px-4 pt-20 flex gap-8 flex-col text-white w-full max-w-2xl relative mx-auto',
+			'landscape:text-primary landscape:flex-row landscape:justify-center landscape:max-w-7xl'
+		]}
+	>
+		<aside class='sticky top-4 landscape:top-10 mb-10 aspect-video w-full h-full max-w-2xl'>
+			<YouTube id={video_id} class='aspect-video' />
+		</aside>
+		<article class='grid gap-4 h-full w-full mt-1'>
+			<h1 class='font-title text-5xl sm:text-7xl lg:text-8xl font-black uppercase'>
+				{
+					full_name
+						.split(' ')
+						.map((text) => <span class='block -mt-2 md:-mt-3 lg:-mt-4'>{text}</span>)
+				}
+			</h1>
+
+			<h2 class='font-subtitle text-2xl font-extralight -mt-4 mb-4 sm:-mt-6 sm:mb-6'>
+				{project_name} - <span class='font-bold'>{project_year}</span>
+			</h2>
+			<Paragraph text={project_description} class='font-paragraph font-light' />
+			<figure class='columns-[3_125px] gap-x-8 my-10'>
+				{
+					project_images.map((image) => (
+						<a href='#gallery' class='block mb-8'>
+							<Image src={image} alt='asdads' width={200} class='max-w-full' />
+						</a>
+					))
+				}
+			</figure>
+		</article>
 	</main>
-	<Footer class='h-1/2 [clip-path:polygon(0%_20%,100%_0%,100%_100%,0%_100%);]' />
+	<Footer class='h-full' />
 </Layout>
