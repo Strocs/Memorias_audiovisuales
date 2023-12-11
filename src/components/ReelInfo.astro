@@ -37,7 +37,9 @@ const { name, projectName, projectYear, index, total } = Astro.props
 			'landscape:grid-flow-row landscape:grid-rows-[1fr_auto_auto] landscape:h-full landscape:items-start landscape:justify-start landscape:gap-4'
 		]}
 	>
-		<Button as='a' href={`${getPath(name)}?project=${getPath(projectName)}`}>Ver más</Button>
+		<Button as='a' color='secondary' href={`${getPath(name)}?project=${getPath(projectName)}`}>
+			Ver más
+		</Button>
 		<p class:list={['text-lg font-paragraph font-light leading-none', 'landscape:self-end']}>
 			{index} / {total}
 		</p>

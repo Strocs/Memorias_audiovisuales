@@ -2,15 +2,27 @@
 interface Props {
 	as?: 'a' | 'button'
 	class?: string
+	color?: 'primary' | 'secondary'
 	[x: string]: any
 }
 
-const { as: Element = 'button', class: customStyles, ...props }: Props = Astro.props
+const {
+	as: Element = 'button',
+	class: customStyles,
+	color = 'primary',
+	...props
+}: Props = Astro.props
+
+const colorVariants = {
+	primary: 'text-primary ring-primary hover:bg-primary hover:text-white',
+	secondary:
+		'text-white ring-white hover:bg-white hover:text-primary landscape:text-primary landscape:ring-primary landscape:hover:bg-primary landscape:hover:text-white'
+}
 
 const defaultStyles = [
-	'bg-transparent w-fit text-white ring-1 ring-white rounded-full px-3 font-title font-medium',
-	'hover:bg-transparent hover:text-primary duration-150',
-	'landscape:bg-primary landscape:ring-primary'
+	'bg-transparent w-fit ring-1 rounded-full px-3 font-title font-medium',
+	'duration-150',
+	colorVariants[color]
 ]
 ---
 
