@@ -12,9 +12,9 @@ module.exports = {
 				white: '#f5f5fa'
 			},
 			fontFamily: {
-				title: ['Nunito Sans', 'system-ui', 'sans-serif'],
-				subtitle: ['Mukta Vaani', 'system-ui', 'sans-serif'],
-				paragraph: ['Kanit', 'system-ui', 'sans-serif']
+				paragraph: ['Nunito Sans', 'system-ui', 'sans-serif'],
+				title: ['Mukta Vaani', 'system-ui', 'sans-serif'],
+				secondary: ['Kanit', 'system-ui', 'sans-serif']
 			}
 		}
 	},
