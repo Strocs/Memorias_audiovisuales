@@ -7,7 +7,7 @@ import Footer from '@components/ui/Footer.astro'
 ---
 
 <Layout title='Escuela de Arquitectura, Universidad de La Serena'>
-	<Header absolute />
+	<Header class='absolute top-0 w-full z-10 !text-white landscape:!text-primary' />
 	<main class='swiper-footer swiper h-full w-full'>
 		<div class='swiper-wrapper'>
 			<div class='swiper-slide'>
@@ -49,7 +49,7 @@ import Footer from '@components/ui/Footer.astro'
 		mousewheel: true
 	})
 
-	swiperReel.on('slideChangeTransitionEnd', function ({ slides }) {
+	swiperReel.on('slideChangeTransitionEnd', ({ slides }) => {
 		const activeSlide = slides.find((reel) => reel.className.includes('swiper-slide-active'))
 		const activeVideo = activeSlide?.querySelector('video') as HTMLVideoElement
 
@@ -60,5 +60,11 @@ import Footer from '@components/ui/Footer.astro'
 			video.currentTime = 0
 			video.muted = false
 		})
+	})
+
+	const header = document.querySelector('header') as HTMLHeadElement
+
+	swiperFooter.on('slideChangeTransitionStart', () => {
+		header.classList.toggle('hidden')
 	})
 </script>

@@ -1,23 +1,11 @@
 ---
 import LogoULS from '@components/icons/LogoULS.astro'
-import LogoArqULS from '../icons/LogoArqULS.astro'
-import { SITE_INFO } from '@data/SITE_INFO'
+import LogoMemoria from './LogoMemoria.astro'
 
-const { absolute } = Astro.props
-
-const { title, subtitle } = SITE_INFO
-
-const titleSplitted = title.split(' ')
-const isAbsolute = absolute ? 'absolute top-0 w-full z-10' : ''
+const { class: customStyle } = Astro.props
 ---
 
-<header
-	class:list={[
-		'text-white px-4 pt-4 flex justify-between',
-		'landscape:text-black landscape:px-10',
-		isAbsolute
-	]}
->
+<header class:list={['text-black px-4 pt-4 flex justify-between', 'landscape:px-10', customStyle]}>
 	<a
 		href='https://userena.cl/'
 		target='_blank'
@@ -25,24 +13,5 @@ const isAbsolute = absolute ? 'absolute top-0 w-full z-10' : ''
 	>
 		<LogoULS />
 	</a>
-	<div class='flex gap-1'>
-		<a href='/' class='text-right group'>
-			<h1 class='text-xl uppercase leading-none tracking-widest font-title'>
-				{titleSplitted[0]}
-				<strong class='font-black block group-hover:text-red-600 duration-150'
-					>{titleSplitted[1]}</strong
-				>
-			</h1>
-			<h2 class='absolute text-xs font-light font-paragraph leading-none tracking-widest'>
-				{subtitle}
-			</h2>
-		</a>
-		<a
-			href='https://arquls.userena.cl/'
-			target='_blank'
-			class='w-[2.8rem] -mt-[5px] block hover:text-red-600 transition-colors duration-150'
-		>
-			<LogoArqULS />
-		</a>
-	</div>
+	<LogoMemoria />
 </header>

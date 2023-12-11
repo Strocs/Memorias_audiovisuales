@@ -23,14 +23,11 @@ const { name, projectName, projectYear, index, total } = Astro.props
 >
 	<article class='w-full'>
 		<h2
-			class:list={[
-				'text-2xl font-semibold font-subtitle tracking-wide',
-				'xl:text-4xl xl:font-black'
-			]}
+			class:list={['text-2xl font-semibold font-title tracking-wide', 'xl:text-4xl xl:font-black']}
 		>
 			{name}
 		</h2>
-		<p class:list={['leading-tight font-paragraph font-light max-w-md', 'xl:leading-none']}>
+		<p class:list={['leading-tight font-paragraph max-w-md', 'xl:leading-none']}>
 			{projectName} - <b>{projectYear}</b>
 		</p>
 	</article>

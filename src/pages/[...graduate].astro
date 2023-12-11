@@ -8,6 +8,9 @@ import { GRADUATES } from '@data/GRADUATES'
 import { getPath } from '@utils/getPath'
 import { YouTube } from '@astro-community/astro-embed-youtube'
 import { Image } from 'astro:assets'
+import Button from '@components/ui/Button.astro'
+import { getNextPath } from '@utils/getNextPath'
+import { getPrevPath } from '@utils/getPrevPath'
 
 export const getStaticPaths = (() => {
 	return GRADUATES.map((graduate) => {
@@ -27,38 +30,37 @@ const {
 	project_images,
 	video_id
 } = Astro.props
-
-console.log(project_images)
 ---
 
 <Layout title={name + ' - ' + project_name}>
 	<Header />
 	<main
 		class:list={[
-			'px-4 pt-20 flex gap-8 flex-col text-white w-full max-w-2xl relative mx-auto',
-			'landscape:text-primary landscape:flex-row landscape:justify-center landscape:max-w-7xl'
+			'px-4 pt-20 text-primary flex gap-10 flex-col w-full max-w-2xl relative mx-auto',
+			' landscape:flex-row landscape:justify-center landscape:max-w-7xl'
 		]}
 	>
-		<aside class='sticky top-4 landscape:top-10 mb-10 aspect-video w-full h-full max-w-2xl'>
+		<aside
+			class='sticky top-4 landscape:top-10 mb-10 aspect-video w-full h-full max-w-2xl overflow-hidden rounded-2xl'
+		>
 			<YouTube id={video_id} class='aspect-video' />
 		</aside>
 		<article class='grid gap-4 h-full w-full mt-1'>
-			<h1 class='font-title text-5xl sm:text-7xl lg:text-8xl font-black uppercase'>
-				{
-					full_name
-						.split(' ')
-						.map((text) => <span class='block -mt-2 md:-mt-3 lg:-mt-4'>{text}</span>)
-				}
+			<h1 class='font-title text-5xl font-black uppercase'>
+				{full_name}
 			</h1>
 
-			<h2 class='font-subtitle text-2xl font-extralight -mt-4 mb-4 sm:-mt-6 sm:mb-6'>
+			<h2 class='font-title text-3xl md:text-4xl font-extralight -mt-4 mb-4 sm:-mt-5 sm:mb-5'>
 				{project_name} - <span class='font-bold'>{project_year}</span>
 			</h2>
-			<Paragraph text={project_description} class='font-paragraph font-light' />
-			<figure class='columns-[3_125px] gap-x-8 my-10'>
+			<Paragraph text={project_description} class='font-paragraph' />
+			<figure class='columns-[3_125px] gap-x-4 my-8'>
 				{
 					project_images.map((image) => (
-						<a href='#gallery' class='block mb-8'>
+						<a
+							href='#gallery'
+							class='block mb-4 rounded-xl overflow-hidden hover:outline outline-8 outline-primary transition-[outline] duration-150'
+						>
 							<Image src={image} alt='asdads' width={200} class='max-w-full' />
 						</a>
 					))
@@ -66,5 +68,10 @@ console.log(project_images)
 			</figure>
 		</article>
 	</main>
-	<Footer class='h-full' />
+	<Footer class='h-full'>
+		<div class='flex items-center justify-between'>
+			<Button as='a' href={getPrevPath(name)}>Ir al Anterior</Button>
+			<Button as='a' href={getNextPath(name)}>Ir al Siguiente</Button>
+		</div>
+	</Footer>
 </Layout>

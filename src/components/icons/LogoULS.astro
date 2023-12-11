@@ -1,4 +1,11 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 414.41 470.58'
+---
+interface Props {
+	class?: string
+}
+const { class: customStyle } = Astro.props
+---
+
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 414.41 470.58' class={customStyle}
 	><g id='LogoUls'
 		><g id='Texto'
 			><path

@@ -1,0 +1,59 @@
+---
+import LogoArqULS from '../icons/LogoArqULS.astro'
+import { SITE_INFO } from '@data/SITE_INFO'
+
+interface Props {
+	size?: 'sm' | 'lg'
+}
+const { size = 'sm' } = Astro.props
+
+const componentVariant = {
+	sm: {
+		h1: 'text-xl',
+		h2: 'text-xs',
+		logo: 'w-[2.8rem] -mt-[5px]'
+	},
+	lg: {
+		h1: 'text-3xl sm:text-4xl',
+		h2: 'text-lg sm:text-[1.35rem]',
+		logo: 'w-[4.2rem] sm:w-[5.4rem] -mt-2'
+	}
+}
+
+const { title, subtitle } = SITE_INFO
+const titleSplitted = title.split(' ')
+---
+
+<div class='flex gap-1'>
+	<a href='/' class='text-right group'>
+		<h1
+			class:list={[
+				'uppercase leading-none tracking-widest font-paragraph',
+				componentVariant[size].h1
+			]}
+		>
+			{titleSplitted[0]}
+			<strong class='font-black block group-hover:text-red-600 duration-150'
+				>{titleSplitted[1]}</strong
+			>
+		</h1>
+		<h2
+			class:list={[
+				'absolute font-secondary leading-none tracking-widest font-light',
+				componentVariant[size].h2
+			]}
+		>
+			{subtitle}
+		</h2>
+	</a>
+	<a
+		href='https://arquls.userena.cl/'
+		target='_blank'
+		class:list={[
+			'block hover:text-red-600 transition-colors duration-150',
+			componentVariant[size].logo
+		]}
+	>
+		<LogoArqULS />
+	</a>
+</div>
