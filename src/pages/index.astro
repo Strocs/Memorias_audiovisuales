@@ -30,6 +30,28 @@ import Footer from '@components/ui/Footer.astro'
 	import Swiper from 'swiper'
 	import { Navigation, Keyboard, Mousewheel } from 'swiper/modules'
 
+	const setActiveSlider = ({ slides }: { slides: HTMLElement[] }) => {
+		const activeSlide = slides.find((reel) => reel.className.includes('active'))
+		const activeVideo = activeSlide?.querySelector('video') as HTMLVideoElement
+
+		slides.forEach((slide) => {
+			const video = slide.querySelector('video') as HTMLVideoElement
+
+			if (activeVideo === video) {
+				console.log(activeVideo)
+				video.play().then(() => {
+					if (video.muted) {
+						video.muted = false
+					}
+				})
+				return
+			}
+
+			video.pause()
+			video.currentTime = 0
+		})
+	}
+
 	const swiperFooter = new Swiper('.swiper-footer', {
 		modules: [Keyboard],
 		keyboard: {
@@ -46,25 +68,16 @@ import Footer from '@components/ui/Footer.astro'
 		},
 		direction: 'vertical',
 		loop: true,
-		mousewheel: true
+		mousewheel: true,
+		on: {
+			afterInit: setActiveSlider,
+			slideNextTransitionStart: setActiveSlider,
+			slidePrevTransitionStart: setActiveSlider
+		}
 	})
 
-	const setActiveSlider = ({ slides }: { slides: HTMLElement[] }) => {
-		const activeSlide = slides.find((reel) => reel.className.includes('swiper-slide-active'))
-		const activeVideo = activeSlide?.querySelector('video') as HTMLVideoElement
-		slides.forEach((slide) => {
-			const video = slide.querySelector('video') as HTMLVideoElement
-			if (activeVideo === video) {
-				video.muted = false
-				return activeVideo.play()
-			}
-			video.pause()
-			video.currentTime = 0
-		})
-	}
-
-	swiperReel.on('slideNextTransitionStart', setActiveSlider)
-	swiperReel.on('slidePrevTransitionStart', setActiveSlider)
+	// swiperReel.on('slideNextTransitionStart', setActiveSlider)
+	// swiperReel.on('slidePrevTransitionStart', setActiveSlider)
 
 	const header = document.querySelector('header') as HTMLHeadElement
 

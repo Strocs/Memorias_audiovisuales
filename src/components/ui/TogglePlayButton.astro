@@ -5,11 +5,11 @@ import PlayIcon from '@components/icons/PlayIcon.astro'
 const { id } = Astro.props
 ---
 
-<button id={'play-btn_' + id} class='' type='button' aria-label='Botón de reproducción'>
-	<PlayIcon />
-</button>
 <button id={'pause-btn_' + id} class='hidden' type='button' aria-label='Botón de pausado'>
 	<PauseIcon />
+</button>
+<button id={'play-btn_' + id} class='' type='button' aria-label='Botón de reproducción'>
+	<PlayIcon />
 </button>
 
 <script define:vars={{ id }}>
@@ -23,11 +23,21 @@ const { id } = Astro.props
 	}
 
 	playBtn.addEventListener('click', () => {
-		video.play()
+		video.play().catch((error) => {
+			// Autoplay was prevented
+			// Handle the error or display a play button to let the user start playback
+		})
 	})
+
 	pauseBtn.addEventListener('click', () => {
 		video.pause()
 	})
-	video.addEventListener('play', toggleButtons)
-	video.addEventListener('pause', toggleButtons)
+
+	video.addEventListener('play', () => {
+		toggleButtons()
+	})
+
+	video.addEventListener('pause', () => {
+		toggleButtons()
+	})
 </script>

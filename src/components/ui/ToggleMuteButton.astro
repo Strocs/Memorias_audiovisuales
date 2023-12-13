@@ -23,7 +23,7 @@ const { id } = Astro.props
 	}
 
 	muteBtn.addEventListener('click', () => {
-		video.muted = false
+		video.muted = !video.muted
 	})
 	soundBtn.addEventListener('click', () => {
 		video.muted = true
