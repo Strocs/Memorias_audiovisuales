@@ -7,27 +7,22 @@ const { id } = Astro.props
 
 <button id={'mute-btn_' + id} type='button' aria-label='Botón de Silencio' class=''>
 	<MutedIcon />
-</button>
-<button id={'sound-btn_' + id} type='button' aria-label='Botón de Sonido' class='hidden'>
-	<SoundIcon />
+	<SoundIcon hidden />
 </button>
 
 <script define:vars={{ id }}>
-	const video = document.getElementById(id)
+	const reel = document.getElementById(id)
 	const muteBtn = document.getElementById(`mute-btn_${id}`)
-	const soundBtn = document.getElementById(`sound-btn_${id}`)
+	const icons = muteBtn.children
 
 	function toggleButtons() {
-		muteBtn.classList.toggle('hidden')
-		soundBtn.classList.toggle('hidden')
+		icons[0].classList.toggle('hidden')
+		icons[1].classList.toggle('hidden')
 	}
 
 	muteBtn.addEventListener('click', () => {
-		video.muted = !video.muted
-	})
-	soundBtn.addEventListener('click', () => {
-		video.muted = true
+		reel.muted = !reel.muted
 	})
 
-	video.addEventListener('volumechange', toggleButtons)
+	reel.addEventListener('volumechange', toggleButtons)
 </script>

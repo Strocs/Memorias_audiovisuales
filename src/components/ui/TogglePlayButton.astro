@@ -5,39 +5,34 @@ import PlayIcon from '@components/icons/PlayIcon.astro'
 const { id } = Astro.props
 ---
 
-<button id={'pause-btn_' + id} class='hidden' type='button' aria-label='Botón de pausado'>
-	<PauseIcon />
-</button>
-<button id={'play-btn_' + id} class='' type='button' aria-label='Botón de reproducción'>
+<button id={'pause-btn_' + id} type='button' aria-label='Botón de pausado'>
 	<PlayIcon />
+	<PauseIcon hidden />
 </button>
 
 <script define:vars={{ id }}>
-	const video = document.getElementById(id)
-	const playBtn = document.getElementById(`play-btn_${id}`)
+	const reel = document.getElementById(id)
 	const pauseBtn = document.getElementById(`pause-btn_${id}`)
+	const icons = pauseBtn.children
 
 	function toggleButtons() {
-		playBtn.classList.toggle('hidden')
-		pauseBtn.classList.toggle('hidden')
+		icons[0].classList.toggle('hidden')
+		icons[1].classList.toggle('hidden')
 	}
 
-	playBtn.addEventListener('click', () => {
-		video.play().catch((error) => {
-			// Autoplay was prevented
-			// Handle the error or display a play button to let the user start playback
+	pauseBtn.addEventListener('click', () => {
+		if (!reel.paused) return reel.pause()
+		reel.play().catch((error) => {
+			console.log('Something wrong: ' + error)
+			reel.pause()
 		})
 	})
 
-	pauseBtn.addEventListener('click', () => {
-		video.pause()
-	})
-
-	video.addEventListener('play', () => {
+	reel.addEventListener('play', () => {
 		toggleButtons()
 	})
 
-	video.addEventListener('pause', () => {
+	reel.addEventListener('pause', () => {
 		toggleButtons()
 	})
 </script>

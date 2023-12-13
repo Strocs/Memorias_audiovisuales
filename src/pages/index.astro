@@ -32,23 +32,27 @@ import Footer from '@components/ui/Footer.astro'
 
 	const setActiveSlider = ({ slides }: { slides: HTMLElement[] }) => {
 		const activeSlide = slides.find((reel) => reel.className.includes('active'))
-		const activeVideo = activeSlide?.querySelector('video') as HTMLVideoElement
+		const activeReel = activeSlide?.querySelector('video') as HTMLVideoElement
 
 		slides.forEach((slide) => {
-			const video = slide.querySelector('video') as HTMLVideoElement
+			const reel = slide.querySelector('video') as HTMLVideoElement
 
-			if (activeVideo === video) {
-				console.log(activeVideo)
-				video.play().then(() => {
-					if (video.muted) {
-						video.muted = false
-					}
-				})
+			if (activeReel === reel) {
+				reel
+					.play()
+					.then(() => {
+						if (reel.muted) {
+							reel.muted = false
+						}
+					})
+					.catch((error) => {
+						console.log('Something wrong: ' + error)
+					})
 				return
 			}
 
-			video.pause()
-			video.currentTime = 0
+			reel.pause()
+			reel.currentTime = 0
 		})
 	}
 
@@ -75,9 +79,6 @@ import Footer from '@components/ui/Footer.astro'
 			slidePrevTransitionStart: setActiveSlider
 		}
 	})
-
-	// swiperReel.on('slideNextTransitionStart', setActiveSlider)
-	// swiperReel.on('slidePrevTransitionStart', setActiveSlider)
 
 	const header = document.querySelector('header') as HTMLHeadElement
 
