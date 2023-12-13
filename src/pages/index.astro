@@ -49,17 +49,19 @@ import Footer from '@components/ui/Footer.astro'
 		mousewheel: true
 	})
 
-	swiperReel.on('slideChangeTransitionEnd', ({ slides }) => {
+	swiperReel.on('slideNextTransitionStart', ({ slides }) => {
 		const activeSlide = slides.find((reel) => reel.className.includes('swiper-slide-active'))
 		const activeVideo = activeSlide?.querySelector('video') as HTMLVideoElement
 		slides.forEach((slide) => {
 			const video = slide.querySelector('video') as HTMLVideoElement
 
-			if (activeVideo === video) return activeVideo.play()
-
+			if (activeVideo === video) {
+				video.muted = false
+				return activeVideo.play()
+			}
+			console.log('video unmuted')
 			video.pause()
 			video.currentTime = 0
-			video.muted = false
 		})
 	})
 
