@@ -11,7 +11,7 @@ export const GRADUATES: Graduates = [
 		project_year: '2022',
 		project_description:
 			'El proyecto resulta contradictorio porque es una propuesta de lo que critica, intentando reunir y generando espacios de encuentro, mientras que a su vez reduce la interacción y desplazamiento en su interior suprimiendo los espacios de circulación, además de restringir el acceso a las que personas que estén contagiadas, esto debido a la nueva relación del espacio publico por el aumento del individualismo.',
-		reel_id: 'mock1',
+		reel_id: 'mock4',
 		video_id: '8yMzZwAtZRw',
 		project_images: diego_alvarado_imgs,
 	},
@@ -45,8 +45,8 @@ export const GRADUATES: Graduates = [
 		project_year: '2021',
 		project_description:
 			'La propuesta pretende narrar y comprender un hecho, establecer un espacio para la memoria, de reflexión y síntesis frente a lo ocurrido. De esta forma, activar los sentidos, convertir una memoria individual en una memoria colectiva. Un espacio que, ademas de honrar a aquellas personas que fueron victimas de las violaciones a los derechos humanos y a sus familias que no han descasado por mas de 40 años buscando justicia y verdad, sea capaz de trasladar al visitante por un instante al lugar del otro (victima y familiar), haciéndolo parte de la ausencia, pero también de la reparación de la memoria.',
-		reel_id: 'mock4',
-		video_id: '8yMzZwAtZRw',
+		reel_id: 'rcpmrdlm',
+		video_id: '7fnB7G7cKTM',
 		project_images: cristian_perez_imgs,
 	}
 ]

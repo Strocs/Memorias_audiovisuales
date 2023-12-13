@@ -1,0 +1,33 @@
+---
+import PauseIcon from '@components/icons/PauseIcon.astro'
+import PlayIcon from '@components/icons/PlayIcon.astro'
+
+const { id } = Astro.props
+---
+
+<button id={'play-btn_' + id} class='' type='button' aria-label='Botón de reproducción'>
+	<PlayIcon />
+</button>
+<button id={'pause-btn_' + id} class='hidden' type='button' aria-label='Botón de pausado'>
+	<PauseIcon />
+</button>
+
+<script define:vars={{ id }}>
+	const video = document.getElementById(id)
+	const playBtn = document.getElementById(`play-btn_${id}`)
+	const pauseBtn = document.getElementById(`pause-btn_${id}`)
+
+	function toggleButtons() {
+		playBtn.classList.toggle('hidden')
+		pauseBtn.classList.toggle('hidden')
+	}
+
+	playBtn.addEventListener('click', () => {
+		video.play()
+	})
+	pauseBtn.addEventListener('click', () => {
+		video.pause()
+	})
+	video.addEventListener('play', toggleButtons)
+	video.addEventListener('pause', toggleButtons)
+</script>

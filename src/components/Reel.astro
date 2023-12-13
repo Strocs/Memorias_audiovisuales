@@ -30,11 +30,16 @@ const { name, project_name, project_year, reel_id } = info
 				'bg-shadow shrink-0 relative w-full h-fit overflow-hidden',
 				'sm:rounded-2xl',
 				'landscape:h-full landscape:w-fit landscape:shadow-lg landscape:shadow-secondary landscape:after:hidden landscape:before:hidden',
-				'before:content-[""] before:absolute before:-top-px before:w-full before:h-1/2 before:bg-gradient-to-t before:from-transparent before:from-20% before:to-primary',
-				'after:content-[""] after:absolute after:-bottom-px after:w-full after:h-1/2 after:bg-gradient-to-b after:from-transparent after:from-20% after:to-primary'
+				'before:content-[""] before:absolute before:-top-px before:w-full before:h-1/4 before:bg-gradient-to-t before:from-transparent before:to-primary',
+				'after:content-[""] after:absolute after:-bottom-px after:w-full after:h-1/4 after:bg-gradient-to-b after:from-transparent after:to-primary'
 			]}
 		>
-			<video class:list={['object-cover h-full w-fit aspect-[9/16]', 'sm:scale-[1.01]']} loop>
+			<video
+				id={reel_id}
+				class:list={['object-cover h-full w-fit aspect-[9/16]', 'sm:scale-[1.01]']}
+				loop
+				autoplay
+			>
 				<source src={`/${reel_id}.mp4`} type='video/mp4' />
 			</video>
 		</section>
@@ -44,13 +49,14 @@ const { name, project_name, project_year, reel_id } = info
 			projectYear={project_year}
 			index={index}
 			total={total}
+			reelId={reel_id}
 		/>
 	</div>
 </section>
 
 <script>
-	// const activeVideo = document
-	// 	.querySelector('.swiper-slide-active')
-	// 	?.querySelector('video') as HTMLVideoElement
-	// activeVideo.muted = true
+	const activeVideo = document
+		.querySelector('.swiper-slide-active')
+		?.querySelector('video') as HTMLVideoElement
+	activeVideo.muted = true
 </script>

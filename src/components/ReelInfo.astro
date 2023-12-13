@@ -1,8 +1,8 @@
 ---
 import { getPath } from '@utils/getPath'
-import { MuteButton } from './MuteButton'
-import { PlayButton } from './PlayButton'
 import Button from './ui/Button.astro'
+import TogglePlayButton from './ui/TogglePlayButton.astro'
+import ToggleMuteButton from './ui/ToggleMuteButton.astro'
 
 interface Props {
 	name: string
@@ -10,9 +10,10 @@ interface Props {
 	projectYear: string
 	index: number
 	total: number
+	reelId: string
 }
 
-const { name, projectName, projectYear, index, total } = Astro.props
+const { name, projectName, projectYear, index, total, reelId } = Astro.props
 ---
 
 <aside
@@ -45,8 +46,8 @@ const { name, projectName, projectYear, index, total } = Astro.props
 		</p>
 
 		<div class:list={['flex gap-4 items-center', 'landscape:self-end landscape:-ml-2']}>
-			<PlayButton client:load />
-			<MuteButton client:load />
+			<TogglePlayButton id={reelId} />
+			<ToggleMuteButton id={reelId} />
 		</div>
 	</footer>
 </aside>

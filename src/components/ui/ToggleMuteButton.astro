@@ -1,0 +1,33 @@
+---
+import MutedIcon from '@components/icons/MutedIcon.astro'
+import SoundIcon from '@components/icons/SoundIcon.astro'
+
+const { id } = Astro.props
+---
+
+<button id={'mute-btn_' + id} type='button' aria-label='Botón de Silencio' class='hidden'>
+	<MutedIcon />
+</button>
+<button id={'sound-btn_' + id} type='button' aria-label='Botón de Sonido' class=''>
+	<SoundIcon />
+</button>
+
+<script define:vars={{ id }}>
+	const video = document.getElementById(id)
+	const muteBtn = document.getElementById(`mute-btn_${id}`)
+	const soundBtn = document.getElementById(`sound-btn_${id}`)
+
+	function toggleButtons() {
+		muteBtn.classList.toggle('hidden')
+		soundBtn.classList.toggle('hidden')
+	}
+
+	muteBtn.addEventListener('click', () => {
+		video.muted = false
+	})
+	soundBtn.addEventListener('click', () => {
+		video.muted = true
+	})
+
+	video.addEventListener('volumechange', toggleButtons)
+</script>
