@@ -39,6 +39,7 @@ const { name, project_name, project_year, reel_id } = info
 				class:list={['object-cover h-full w-fit aspect-[9/16]', 'sm:scale-[1.01]']}
 				loop
 				autoplay
+				muted
 			>
 				<source src={`/${reel_id}.mp4`} type='video/mp4' />
 			</video>
@@ -53,10 +54,3 @@ const { name, project_name, project_year, reel_id } = info
 		/>
 	</div>
 </section>
-
-<script>
-	const activeVideo = document
-		.querySelector('.swiper-slide-active')
-		?.querySelector('video') as HTMLVideoElement
-	activeVideo.muted = true
-</script>
