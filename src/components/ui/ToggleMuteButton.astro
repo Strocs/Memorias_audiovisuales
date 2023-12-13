@@ -5,7 +5,7 @@ import SoundIcon from '@components/icons/SoundIcon.astro'
 const { id } = Astro.props
 ---
 
-<button id={'mute-btn_' + id} type='button' aria-label='Botón de Silencio' class=''>
+<button id={'mute-btn_' + id} type='button' class='p-1' aria-label='Botón de Silencio' class=''>
 	<MutedIcon />
 	<SoundIcon hidden />
 </button>
