@@ -22,6 +22,7 @@ const { id } = Astro.props
 
 	muteBtn.addEventListener('click', () => {
 		reel.muted = !reel.muted
+		globalThis.soundActive = !globalThis.soundActive
 	})
 
 	reel.addEventListener('volumechange', toggleButtons)

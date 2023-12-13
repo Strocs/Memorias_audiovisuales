@@ -30,26 +30,31 @@ import Footer from '@components/ui/Footer.astro'
 	import Swiper from 'swiper'
 	import { Navigation, Keyboard, Mousewheel } from 'swiper/modules'
 
+	const addEventsToSlides = ({ slides }: { slides: HTMLElement[] }) => {
+		slides.forEach((slide) => {
+			const reel = slide.querySelector('video') as HTMLVideoElement
+			reel.addEventListener('click', () => {
+				reel.muted = !reel.muted
+				globalThis.soundActive = !globalThis.soundActive || false
+			})
+		})
+
+		setActiveSlider({ slides })
+	}
+
 	const setActiveSlider = ({ slides }: { slides: HTMLElement[] }) => {
-		const activeSlide = slides.find((reel) => reel.className.includes('active'))
-		const activeReel = activeSlide?.querySelector('video') as HTMLVideoElement
+		const activeReel = slides
+			.find((reel) => reel.className.includes('active'))
+			?.querySelector('video') as HTMLVideoElement
 
 		slides.forEach((slide) => {
 			const reel = slide.querySelector('video') as HTMLVideoElement
+			reel.muted = !globalThis.soundActive
 
-			if (activeReel === reel) {
-				reel
-					.play()
-					.then(() => {
-						if (reel.muted) {
-							reel.muted = false
-						}
-					})
-					.catch((error) => {
-						console.log('Something wrong: ' + error)
-					})
-				return
-			}
+			if (activeReel === reel)
+				return reel.play().catch((error) => {
+					console.log('Something wrong: ' + error)
+				})
 
 			reel.pause()
 			reel.currentTime = 0
@@ -74,7 +79,7 @@ import Footer from '@components/ui/Footer.astro'
 		loop: true,
 		mousewheel: true,
 		on: {
-			afterInit: setActiveSlider,
+			afterInit: addEventsToSlides,
 			slideNextTransitionStart: setActiveSlider,
 			slidePrevTransitionStart: setActiveSlider
 		}
