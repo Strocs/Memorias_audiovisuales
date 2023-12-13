@@ -1,0 +1,108 @@
+---
+import Button from './ui/Button.astro'
+import { Image } from 'astro:assets'
+interface Props {
+	images: ImageMetadata[]
+	name: string
+}
+const { images, name } = Astro.props
+---
+
+<section
+	id='gallery'
+	class='swiper-gallery flex flex-col w-full h-full fixed left-0 top-0 right-0 bottom-0 backdrop-blur-md bg-transparent'
+	style='display: none;'
+>
+	<figure class='swiper-wrapper flex h-full'>
+		{
+			images.map((photo, i) => (
+				<div class='swiper-slide cursor-grab shrink-0 max-h-[92%] sm:max-h-[90%]'>
+					<div class='swiper-zoom-container'>
+						<Image
+							src={photo}
+							data-index={i}
+							alt={`Lámina número ${i} del proyecto de titulación de ${name}`}
+							class='px-6 py-4 w-full h-full object-contain'
+							height={photo.height / 2}
+							width={photo.width / 2}
+						/>
+					</div>
+				</div>
+			))
+		}
+	</figure>
+	<div class='swiper-pagination h-fit text-center font-source-code py-2 absolute bottom-14'></div>
+	<Button id='close_gallery' class='absolute bottom-4 mx-auto left-0 right-0'>
+		Cerrar Galería <svg
+			xmlns='http://www.w3.org/2000/svg'
+			class='inline-block'
+			width='20'
+			height='20'
+			viewBox='0 0 24 24'
+			stroke-width='2'
+			stroke='currentColor'
+			fill='none'
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M18 6l-12 12'></path><path
+				d='M6 6l12 12'></path></svg
+		>
+	</Button>
+</section>
+
+<script>
+	import Swiper from 'swiper'
+	import { Pagination, Zoom } from 'swiper/modules'
+	const swiper = new Swiper('.swiper-gallery', {
+		modules: [Pagination, Zoom],
+		pagination: {
+			el: '.swiper-pagination',
+			type: 'fraction'
+		},
+		zoom: {
+			maxRatio: 4
+		}
+	})
+	// Swiper config
+
+	// Get Elements
+	const body = document.body as HTMLBodyElement
+	const gallery = document.getElementById('gallery') as HTMLElement
+	const images = document.querySelectorAll('[id*=image_wrapper]') as NodeListOf<HTMLAnchorElement>
+	const closeGalleryBtn = document.getElementById('close_gallery') as HTMLButtonElement
+
+	function showGallery(e: Event, index: string | null) {
+		e.preventDefault()
+		if (index) swiper.slideTo(+index, 0, false)
+
+		gallery.removeAttribute('style')
+		body.style.overflow = 'hidden'
+	}
+
+	function closeGallery() {
+		gallery.setAttribute('style', 'display:none')
+		body.style.overflow = ''
+	}
+
+	// Event Listener
+	images.forEach((image) => {
+		const index = image.getAttribute('data-index')
+		image.addEventListener('click', (e) => showGallery(e, index))
+	})
+
+	closeGalleryBtn.addEventListener('click', closeGallery)
+
+	const galleryImagesList = gallery.querySelectorAll('.swiper-zoom-container')
+	galleryImagesList.forEach((galleryItem) => {
+		const image = galleryItem.children[0] as HTMLImageElement
+		if (!image.complete) {
+			galleryItem.insertAdjacentHTML(
+				'afterbegin',
+				'<p id="image_loading" class="font-title text-[3rem] sm:text-[5rem] lg:text-[10rem] font-black absolute z-10 text-center left-0 right-0 mx-auto">cargando...</p>'
+			)
+		}
+		image.addEventListener('load', () => {
+			galleryItem.removeChild(galleryItem.children[0])
+		})
+	})
+</script>
