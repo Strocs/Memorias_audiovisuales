@@ -35,7 +35,7 @@ export const GRADUATES: Graduates = [
 		project_description:
 			'El Humedal El Culebrón es un ecosistema costero de gran importancia para la ciudad de Coquimbo, pero se encuentra amenazado por el crecimiento urbano, la contaminación y la falta de protección oficial. \n Como proyecto se propone conservar el humedal, con un plan integral que incluye las siguientes estrategias: Integrar el humedal al entorno urbano, creando corredores verdes y espacios públicos que permitan una transición gradual entre la ciudad y la naturaleza. Mejorar la estética del humedal, para convertirlo en un atractivo turístico y cultural. \n La conservación del Humedal El Culebrón es una tarea urgente, ya que este ecosistema brinda importantes beneficios a la ciudad, como la regulación del clima, la purificación del agua y el control de inundaciones.',
 		reel_id: 'mock3',
-		video_id: '8yMzZwAtZRw',
+		video_id: '3rvi_qu_fBE',
 		project_images: maria_paulina_godoy_imgs,
 	},
 	{
