@@ -31,7 +31,7 @@ export const GRADUATES: Graduates = [
 		full_name: 'María Paulina Godoy Alvarez',
 		project_name:
 			"Humedal El Culebrón 'Dispositivos Arquitectónicos para su Valorización, Preservación y Visualización'",
-		project_year: '2021',
+		project_year: '2023',
 		project_description:
 			'El Humedal El Culebrón es un ecosistema costero de gran importancia para la ciudad de Coquimbo, pero se encuentra amenazado por el crecimiento urbano, la contaminación y la falta de protección oficial. \n Como proyecto se propone conservar el humedal, con un plan integral que incluye las siguientes estrategias: Integrar el humedal al entorno urbano, creando corredores verdes y espacios públicos que permitan una transición gradual entre la ciudad y la naturaleza. Mejorar la estética del humedal, para convertirlo en un atractivo turístico y cultural. \n La conservación del Humedal El Culebrón es una tarea urgente, ya que este ecosistema brinda importantes beneficios a la ciudad, como la regulación del clima, la purificación del agua y el control de inundaciones.',
 		reel_id: 'rmpghcdavpv',
@@ -42,7 +42,7 @@ export const GRADUATES: Graduates = [
 		name: 'Cristián Perez',
 		full_name: 'Cristián Perez Vásquez',
 		project_name: 'Museo Regional de la Memoria ',
-		project_year: '2021',
+		project_year: '2022',
 		project_description:
 			'La propuesta pretende narrar y comprender un hecho, establecer un espacio para la memoria, de reflexión y síntesis frente a lo ocurrido. De esta forma, activar los sentidos, convertir una memoria individual en una memoria colectiva. Un espacio que, ademas de honrar a aquellas personas que fueron victimas de las violaciones a los derechos humanos y a sus familias que no han descasado por mas de 40 años buscando justicia y verdad, sea capaz de trasladar al visitante por un instante al lugar del otro (victima y familiar), haciéndolo parte de la ausencia, pero también de la reparación de la memoria.',
 		reel_id: 'rcpmrdlm',
