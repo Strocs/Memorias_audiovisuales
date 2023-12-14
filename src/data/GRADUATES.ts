@@ -11,8 +11,8 @@ export const GRADUATES: Graduates = [
 		project_year: '2022',
 		project_description:
 			'El proyecto resulta contradictorio porque es una propuesta de lo que critica, intentando reunir y generando espacios de encuentro, mientras que a su vez reduce la interacción y desplazamiento en su interior suprimiendo los espacios de circulación, además de restringir el acceso a las que personas que estén contagiadas, esto debido a la nueva relación del espacio publico por el aumento del individualismo.',
-		reel_id: 'mock4',
-		video_id: '8yMzZwAtZRw',
+		reel_id: 'rdalctrvmep',
+		video_id: 'n1b8ZF-hilE',
 		project_images: diego_alvarado_imgs,
 	},
 	{
@@ -22,8 +22,8 @@ export const GRADUATES: Graduates = [
 		project_year: '2023',
 		project_description:
 			'La obra de arquitectura del albergue se ha diseñado para visibilizar el cáncer. El volumen vertical del edificio se iluminará con los colores que representan a cada tipo de cáncer según la OMS. La curiosidad que genere este efecto visual se espera que lleve a las personas a buscar información en internet sobre el cáncer. Esta búsqueda podría vincularse a una página web que explique la importancia de la concientización sobre esta enfermedad.',
-		reel_id: 'mock2',
-		video_id: '8yMzZwAtZRw',
+		reel_id: 'rcnaoefylg',
+		video_id: 'a-wGOsQtSP0',
 		project_images: cristian_navarro_imgs,
 	},
 	{
@@ -34,7 +34,7 @@ export const GRADUATES: Graduates = [
 		project_year: '2021',
 		project_description:
 			'El Humedal El Culebrón es un ecosistema costero de gran importancia para la ciudad de Coquimbo, pero se encuentra amenazado por el crecimiento urbano, la contaminación y la falta de protección oficial. \n Como proyecto se propone conservar el humedal, con un plan integral que incluye las siguientes estrategias: Integrar el humedal al entorno urbano, creando corredores verdes y espacios públicos que permitan una transición gradual entre la ciudad y la naturaleza. Mejorar la estética del humedal, para convertirlo en un atractivo turístico y cultural. \n La conservación del Humedal El Culebrón es una tarea urgente, ya que este ecosistema brinda importantes beneficios a la ciudad, como la regulación del clima, la purificación del agua y el control de inundaciones.',
-		reel_id: 'mock3',
+		reel_id: 'rmpghcdavpv',
 		video_id: '3rvi_qu_fBE',
 		project_images: maria_paulina_godoy_imgs,
 	},
