@@ -4,6 +4,7 @@
     "@astrojs/react": "^3.0.7",
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.3",
+    "@astrojs/vercel": "^6.1.0",
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.17",
     "astro": "^4.0.2",
@@ -34,5 +35,5 @@
     "start": "astro dev"
   },
   "type": "module",
-  "version": "0.0.1"
+  "version": "1.0.0"
 }
