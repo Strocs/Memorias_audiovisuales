@@ -30,37 +30,7 @@ import Footer from '@components/ui/Footer.astro'
 	import Swiper from 'swiper'
 	import { Navigation, Keyboard, Mousewheel } from 'swiper/modules'
 
-	const addEventsToSlides = ({ slides }: { slides: HTMLElement[] }) => {
-		slides.forEach((slide) => {
-			const reel = slide.querySelector('video') as HTMLVideoElement
-			reel.addEventListener('click', () => {
-				reel.muted = !reel.muted
-				globalThis.soundActive = !globalThis.soundActive || false
-			})
-		})
-
-		setActiveSlider({ slides })
-	}
-
-	const setActiveSlider = ({ slides }: { slides: HTMLElement[] }) => {
-		const activeReel = slides
-			.find((reel) => reel.className.includes('active'))
-			?.querySelector('video') as HTMLVideoElement
-
-		slides.forEach((slide) => {
-			const reel = slide.querySelector('video') as HTMLVideoElement
-			reel.muted = !globalThis.soundActive
-
-			if (activeReel === reel)
-				return reel.play().catch((error) => {
-					console.log('Something wrong: ' + error)
-				})
-
-			reel.pause()
-			reel.currentTime = 0
-		})
-	}
-
+	// FOOTER SLIDER
 	const swiperFooter = new Swiper('.swiper-footer', {
 		modules: [Keyboard],
 		keyboard: {
@@ -68,6 +38,56 @@ import Footer from '@components/ui/Footer.astro'
 			onlyInViewport: false
 		}
 	})
+
+	const header = document.querySelector('header') as HTMLHeadElement
+
+	swiperFooter.on('slideChangeTransitionStart', () => {
+		header.classList.toggle('hidden')
+	})
+
+	//	REEL SLIDERS
+	type SlideOnTypes = ({ slides }: { slides: HTMLElement[] }, afterinit?: boolean) => void
+	type PausePlayReel = (reel: HTMLVideoElement, button: HTMLSpanElement) => void
+
+	export const pauseReel: PausePlayReel = (reel, button) => {
+		reel.pause()
+		button.style.opacity = '0.8'
+	}
+
+	export const playReel: PausePlayReel = (reel, button) => {
+		reel
+			.play()
+			.then(() => (button.style.opacity = '0'))
+			.catch((error) => {
+				pauseReel(reel, button)
+				console.warn(error)
+			})
+	}
+
+	const playActiveSlider: SlideOnTypes = ({ slides }, afterinit) => {
+		slides.forEach((slide) => {
+			const reelWrapper = slide.querySelector('section') as HTMLElement
+			const reel = reelWrapper?.querySelector('video') as HTMLVideoElement
+			const reelMuteButton = reelWrapper.querySelector('span') as HTMLSpanElement
+
+			reel.volume = +window.isReelsMuted || 1
+
+			if (afterinit) {
+				reelWrapper.addEventListener('click', () => {
+					if (reel.paused) {
+						playReel(reel, reelMuteButton)
+					} else {
+						pauseReel(reel, reelMuteButton)
+					}
+				})
+			}
+
+			if (slide.classList.contains('swiper-slide-active')) return playReel(reel, reelMuteButton)
+
+			pauseReel(reel, reelMuteButton)
+			reel.currentTime = 0
+		})
+	}
 
 	const swiperReel = new Swiper('.swiper-reel', {
 		modules: [Navigation, Keyboard, Mousewheel],
@@ -79,15 +99,11 @@ import Footer from '@components/ui/Footer.astro'
 		loop: true,
 		mousewheel: true,
 		on: {
-			afterInit: addEventsToSlides,
-			slideNextTransitionStart: setActiveSlider,
-			slidePrevTransitionStart: setActiveSlider
+			afterInit: ({ slides }) => playActiveSlider({ slides }, true),
+			slideNextTransitionStart: playActiveSlider,
+			slidePrevTransitionStart: playActiveSlider
 		}
 	})
 
-	const header = document.querySelector('header') as HTMLHeadElement
-
-	swiperFooter.on('slideChangeTransitionStart', () => {
-		header.classList.toggle('hidden')
-	})
+	//TODO:  REFACTOR THIS SCRIPT
 </script>

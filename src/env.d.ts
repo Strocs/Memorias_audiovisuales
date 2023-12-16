@@ -1,3 +1,6 @@
 /// <reference types="astro/client" />
 
-declare const soundActive: boolean
+
+interface Window {
+  isReelsMuted: boolean
+}

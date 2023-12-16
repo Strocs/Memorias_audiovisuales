@@ -1,6 +1,7 @@
 ---
 import type { Graduate } from '../types/graduates'
 import ReelInfo from './ReelInfo.astro'
+import PlayIcon from './icons/PlayIcon.astro'
 
 interface Props {
 	info: Graduate
@@ -35,14 +36,21 @@ const { name, project_name, project_year, reel_id } = info
 			]}
 		>
 			<video
+				data-testid=`reel-${index}`
 				poster={`/${reel_id}.png`}
 				id={reel_id}
 				class:list={['object-cover h-full w-fit aspect-[531/945] select-none ', 'sm:scale-[1.01]']}
 				src={`https://vz-c38a8c7a-730.b-cdn.net/${reel_id}/play_720p.mp4`}
 				loop
-				muted
 			>
 			</video>
+			<span
+				aria-label='Botón de Pausado'
+				class='rounded-full p-4 bg-primary bg-opacity-50 absolute left-0 right-0 m-auto top-0 bottom-0 h-fit w-fit transition-opacity duration-150'
+				style='opacity: 0'
+			>
+				<PlayIcon size='24' />
+			</span>
 		</section>
 		<ReelInfo
 			name={name}

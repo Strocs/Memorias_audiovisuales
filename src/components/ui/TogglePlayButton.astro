@@ -15,17 +15,29 @@ const { id } = Astro.props
 	const pauseBtn = document.getElementById(`pause-btn_${id}`)
 	const icons = pauseBtn.children
 
+	const pauseReel = (reel, button) => {
+		reel.pause()
+		button.style.opacity = '0.8'
+	}
+
+	const playReel = (reel, button) => {
+		reel
+			.play()
+			.then(() => (button.style.opacity = '0'))
+			.catch((error) => {
+				pauseReel(reel, button)
+				console.warn(error)
+			})
+	}
+
 	function toggleButtons() {
 		icons[0].classList.toggle('hidden')
 		icons[1].classList.toggle('hidden')
 	}
 
 	pauseBtn.addEventListener('click', () => {
-		if (!reel.paused) return reel.pause()
-		reel.play().catch((error) => {
-			console.log('Something wrong: ' + error)
-			reel.pause()
-		})
+		if (!reel.paused) return pauseReel(reel, reel.nextElementSibling)
+		playReel(reel, reel.nextElementSibling)
 	})
 
 	reel.addEventListener('play', () => {
