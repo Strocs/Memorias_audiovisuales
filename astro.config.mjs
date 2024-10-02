@@ -9,9 +9,5 @@ export default defineConfig({
 	integrations: [tailwind(), sitemap()],
 	site: 'https://memorias-audiovisuales.vercel.app',
 	output: 'static',
-	adapter: vercel({
-		webAnalytics: {
-			enabled: true
-		}
-	})
+	adapter: vercel()
 })
